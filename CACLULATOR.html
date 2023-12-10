@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #calculator {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid ;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 48%;
+            padding: 10px;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+        button.operator {
+            background-color: black;
+            color: #fff;
+        }
+        button.equal {
+            background-color: #2ecc71;
+            color: #fff;
+        }
+        button.clear {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div id="calculator">
+    <input type="text" id="display" disabled>
+    <br>
+    <button>7</button>
+    <button>8</button>
+    <button>9</button>
+    <button class="operator">/</button>
+    <br>
+    <button>4</button>
+    <button>5</button>
+    <button>6</button>
+    <button class="operator">*</button>
+    <br>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button class="operator">-</button>
+    <br>
+    <button>0</button>
+    <button>.</button>
+    <button class="equal">=</button>
+    <button class="operator">+</button>
+    <br>
+    <button class="clear" onclick="clearDisplay()">C</button>
+</div>
+
+<script>
+    // Get the display element
+    var display = document.getElementById('display');
+
+    // Attach click event listeners to number buttons
+    var numberButtons = document.querySelectorAll('button:not(.operator):not(.equal):not(.clear)');
+    numberButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            display.value += button.textContent;
+        });
+    });
+
+    // Attach click event listener to operator buttons
+    var operatorButtons = document.querySelectorAll('.operator');
+    operatorButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            display.value += button.textContent;
+        });
+    });
+
+    // Attach click event listener to equal button
+    var equalButton = document.querySelector('.equal');
+    equalButton.addEventListener('click', function() {
+        try {
+            display.value = eval(display.value);
+        } catch (error) {
+            display.value = 'Error';
+        }
+    });
+
+    // Function to clear the display
+    function clearDisplay() {
+        display.value = '';
+    }
+</script>
+
+</body>
+</html>
