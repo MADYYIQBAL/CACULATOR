@@ -72,10 +72,8 @@
 </div>
 
 <script>
-    // Get the display element
     var display = document.getElementById('display');
 
-    // Attach click event listeners to number buttons
     var numberButtons = document.querySelectorAll('button:not(.operator):not(.equal):not(.clear)');
     numberButtons.forEach(function(button) {
         button.addEventListener('click', function() {
@@ -83,7 +81,7 @@
         });
     });
 
-    // Attach click event listener to operator buttons
+
     var operatorButtons = document.querySelectorAll('.operator');
     operatorButtons.forEach(function(button) {
         button.addEventListener('click', function() {
@@ -91,7 +89,7 @@
         });
     });
 
-    // Attach click event listener to equal button
+  
     var equalButton = document.querySelector('.equal');
     equalButton.addEventListener('click', function() {
         try {
@@ -101,7 +99,7 @@
         }
     });
 
-    // Function to clear the display
+  
     function clearDisplay() {
         display.value = '';
     }
